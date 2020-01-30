@@ -21,10 +21,10 @@ function flipCoin(){
         let clickDown;
         if(checkingflipNum(coinFlipVal)){
             document.addEventListener("keyup",function(){hitCoinBox(coinArray, coinFlipVal)});
-            // document.addEventListener("mouseup",function(){
-            //     clearInterval(clickDown);
-            //     hitCoinBox(coinArray, coinFlipVal);
-            // });
+            document.addEventListener("mouseup",function(){
+                clearInterval(clickDown);
+                hitCoinBox(coinArray, coinFlipVal);
+            });
             document.addEventListener("keydown",kirbyStartJumpPosition);
             // document.addEventListener("mousedown",function(){
             //     clickDown = setInterval(function(){
@@ -35,10 +35,9 @@ function flipCoin(){
                 clickDown = setInterval(function(){
                     kirbyStartJumpPosition();
                 }, 0);
-                document.addEventListener("touchend",function(){
-                    clearInterval(clickDown);
-                    hitCoinBox(coinArray, coinFlipVal);
-                });
+                // document.addEventListener("touchend",function(){
+                //     clearInterval(clickDown);
+                // });
             });
         }
     // }
