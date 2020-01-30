@@ -35,9 +35,9 @@ function flipCoin(){
                 clickDown = setInterval(function(){
                     kirbyStartJumpPosition();
                 }, 0);
-                // document.addEventListener("touchend",function(){
-                //     clearInterval(clickDown);
-                // });
+                document.addEventListener("touchend",function(){
+                    clearInterval(clickDown);
+                });
             });
         }
     // }
