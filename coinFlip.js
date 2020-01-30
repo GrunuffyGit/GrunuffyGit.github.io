@@ -37,6 +37,7 @@ function flipCoin(){
                 }, 0);
                 document.addEventListener("touchend",function(){
                     clearInterval(clickDown);
+                    hitCoinBox(coinArray, coinFlipVal);
                 });
             });
         }
