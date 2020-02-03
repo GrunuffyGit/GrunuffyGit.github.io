@@ -10,12 +10,11 @@ let closedREye = document.getElementById("close-eye-right");
 let closedLEye = document.getElementById("close-eye-left");
 let coinBox = document.getElementById("coinBox");
 let innerCoinHT = document.getElementById("innerCoin");
-let startModal = document.getElementsByClassName("gameModal");
 
 function flipCoin(){
     //turning off game select modal
     //entering mode's array into the generator
-    // if(event.target.id === "inputBtn"){
+    if(event.target.id === "inputBtn"){
         let coinArray = [];
         let coinFlipVal = document.getElementById("coinsToFlip").value;
         let clickDown;
@@ -26,11 +25,11 @@ function flipCoin(){
                 hitCoinBox(coinArray, coinFlipVal);
             });
             document.addEventListener("keydown",kirbyStartJumpPosition);
-            // document.addEventListener("mousedown",function(){
-            //     clickDown = setInterval(function(){
-            //         kirbyStartJumpPosition();
-            //     }, 0);
-            // });
+            document.addEventListener("mousedown",function(){
+                clickDown = setInterval(function(){
+                    kirbyStartJumpPosition();
+                }, 0);
+            });
             document.addEventListener("touchstart",function(){
                 clickDown = setInterval(function(){
                     kirbyStartJumpPosition();
@@ -40,19 +39,18 @@ function flipCoin(){
                 });
             });
         }
-    // }
+    }
     
 }
 
 function checkingflipNum(coinFlipInput){
     //making sure user inputed value is a number greater than 0
     let errorMsging = document.getElementById("errorMsg");
-    console.log(coinFlipInput);
-    if(coinFlipInput!==null){
     if(!isNaN(Number(coinFlipInput))){
         //if coinflipInput is not a NaN
         if(coinFlipInput>0&& coinFlipInput<=40){
-            startModal[0].style.display = "none";
+            let modal = document.getElementsByClassName("gameModal");
+            modal[0].style.display = "none";
             return true;
         }else if(coinFlipInput>40){
             errorMsging.innerHTML = "Too many coins! Max is 40 please.";
@@ -64,7 +62,6 @@ function checkingflipNum(coinFlipInput){
     }else{
         errorMsging.innerHTML = "Please enter a number!"
         return false;
-    }
     }
 }
 
@@ -455,10 +452,7 @@ function playAgain(){
 }
 
 kirbyMotion();
-// document.addEventListener("click", function(){
-//     flipCoin();
-//     playAgain();
-// });
-
-document.getElementById("inputBtn").onclick = function(){flipCoin()};
-window.onclick = function(){playAgain()};
+document.addEventListener("click", function(){
+    flipCoin();
+    playAgain();
+});
